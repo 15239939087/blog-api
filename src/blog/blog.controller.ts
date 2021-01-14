@@ -1,8 +1,12 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
 class CreateBlogDto {
+  // 字段名简介
   @ApiProperty({ description: '帖子标题' })
+  // 校验参数不能为空
+  @IsNotEmpty({ message: '请填写标题' })
   title: string;
   @ApiProperty({ description: '帖子详情' })
   content: string;
